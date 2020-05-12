@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "employeewise"
+    }
+  },
+  "defaultProject": "employeewise",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

@@ -2,15 +2,27 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { LeaveManagementComponent } from './modules/leave-management/leave-management.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { appReducer } from './store/reducers';
+import { HttpClientModule } from '@angular/common/http';
+
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+// import { environment } from '../../environments/environment';
+import { AppEffects } from './store/effects/app.effects';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, LeaveManagementComponent],
   imports: [
-    BrowserModule
+    BrowserModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([AppEffects]),
+    HttpClientModule,
+    StoreModule.forRoot({ app: appReducer }),
+    // !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
