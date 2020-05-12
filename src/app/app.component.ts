@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { increment, decrement, reset, load } from './store/actions/app.actions';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { increment, decrement, reset, load } from './store/actions/app.actions';
 })
 export class AppComponent implements OnInit {
   title = 'employeewise';
-  data: [];
+  data: Observable<any>;
+  myself$: Observable<any>;
 
   constructor(private store: Store<{ app: number }>) {}
 
@@ -18,14 +20,10 @@ export class AppComponent implements OnInit {
     this.store.dispatch(load());
   }
 
-  subscribeStore() {
-    this.store.pipe(select('app')).subscribe((data: any) => {
-      console.log(data);
-      this.data = data.data;
-    });
-  }
-
   ngOnInit() {
-    this.subscribeStore();
+    this.data = this.store.pipe(
+      select('app'),
+      map((res: any) => res.data)
+    );
   }
 }
