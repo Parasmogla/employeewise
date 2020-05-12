@@ -1,12 +1,9 @@
-<button id="increment"
-  (click)="increment()">Increment</button>
-
-<c1 errorToast>Current Count: {{ count$ | async }}</c1>
-
+<h1>Click on load </h1>
+<!-- {{ count$  }} -->
+<div *ngIf="data">
+  <div *ngFor="let c of data">
+    {{c.id}}
+  </div>
+</div>
+<error id="x"></error>
 <button (click)="load()"> Load</button>
-
-<button id="decrement"
-  (click)="decrement()">Decrement</button>
-
-<button id="reset"
-  (click)="reset()">Reset Counter</button>

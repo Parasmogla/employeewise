@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { increment, decrement, reset, load } from './store/actions/app.actions';
 
 @Component({
@@ -8,15 +8,24 @@ import { increment, decrement, reset, load } from './store/actions/app.actions';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'employeewise';
-  count$: Observable<number>;
+  data: [];
 
-  constructor(private store: Store<{ app: number }>) {
-    this.count$ = store.pipe(select('app'));
-  }
+  constructor(private store: Store<{ app: number }>) {}
 
   load() {
     this.store.dispatch(load());
+  }
+
+  subscribeStore() {
+    this.store.pipe(select('app')).subscribe((data: any) => {
+      console.log(data);
+      this.data = data.data;
+    });
+  }
+
+  ngOnInit() {
+    this.subscribeStore();
   }
 }

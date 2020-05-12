@@ -8,14 +8,17 @@ import {
 } from '../actions/app.actions';
 
 export const initialState = {
-  data: {},
+  data: [],
 };
 
 const $counterReducer = createReducer(
   initialState,
-  on(loaded, (state, payload) => {
+  on(loaded, (state, { payload }) => {
     console.log(state, payload);
-    return state;
+    return {
+      ...initialState,
+      data: payload,
+    };
   })
 );
 

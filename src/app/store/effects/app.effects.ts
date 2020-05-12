@@ -12,7 +12,7 @@ export class AppEffects {
       ofType(load),
       mergeMap(() =>
         this.appService.getAll().pipe(
-          map((data) => loaded({ payload: data })),
+          map((data: any) => loaded({ payload: data.data })),
           catchError(() => of({ type: '[Movies API] Movies Loaded Error' }))
         )
       )

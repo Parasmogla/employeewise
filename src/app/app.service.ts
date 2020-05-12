@@ -8,6 +8,6 @@ export class AppService {
   constructor(private http: HttpClient) {}
 
   getAll() {
-    return this.http.get('https://jsonplaceholder.typicode.com/comments');
+    return this.http.get('http://dummy.restapiexample.com/api/v1/employees');
   }
 }
