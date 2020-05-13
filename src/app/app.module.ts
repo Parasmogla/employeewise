@@ -11,18 +11,24 @@ import { HttpClientModule } from '@angular/common/http';
 // import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 // import { environment } from '../../environments/environment';
 import { AppEffects } from './store/effects/app.effects';
+import { ErrorHandlerComponent } from './modules/shared/components/error-handler/error-handler.component';
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
-  declarations: [AppComponent, LeaveManagementComponent],
+  declarations: [
+    AppComponent,
+    LeaveManagementComponent
+  ],
   imports: [
     BrowserModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([AppEffects]),
     HttpClientModule,
     StoreModule.forRoot({ app: appReducer }),
+    SharedModule
     // !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
