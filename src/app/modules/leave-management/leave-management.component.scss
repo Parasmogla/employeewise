@@ -1,0 +1,56 @@
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header header main main menu menu"
+    "right right footer footer footer footer ";
+  grid-gap: 1.5rem;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 5rem 3rem 5rem 3rem;
+
+
+  div {
+    background-color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 1rem 0;
+    font-size: 1rem;
+  }
+
+
+  .card {
+    border-radius: 0.2rem;
+    min-width: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.01);
+    box-shadow: 1px 3px 3px 0px rgba(0, 0, 0, 0.05);
+    overflow: auto;
+  }
+
+  .item1 {
+    height: 13rem;
+    grid-area: header;
+  }
+
+
+  .item2 {
+    height: 13rem;
+    grid-area: menu;
+  }
+
+  .item3 {
+    height: 13rem;
+    grid-area: main;
+  }
+
+  .item4 {
+    height: 23rem;
+    grid-area: right;
+  }
+
+  .item5 {
+    height: 23rem;
+    grid-area: footer;
+  }
+
+}
