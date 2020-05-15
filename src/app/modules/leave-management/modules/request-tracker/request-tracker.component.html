@@ -1,0 +1,12 @@
+<!-- {{ count$  }} -->
+
+
+<div>
+  <app-table [config]="tableConfig"
+    [tColumns]="tColumns"
+    [rowData]="data | async"></app-table>
+</div>
+
+<app-error-handler id="app-component"></app-error-handler>
+
+<button (click)="load()">Load</button>

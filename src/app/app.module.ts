@@ -1,22 +1,18 @@
+import { LeaveManagementModule } from './modules/leave-management/leave-management.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
-import { LeaveManagementComponent } from './modules/leave-management/leave-management.component';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { appReducer } from './store/reducers';
-import { HttpClientModule } from '@angular/common/http';
-import { AppEffects } from './store/effects/app.effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [AppComponent, LeaveManagementComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([AppEffects]),
-    HttpClientModule,
-    StoreModule.forRoot({ app: appReducer }),
+    LeaveManagementModule,
+    StoreDevtoolsModule.instrument(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
