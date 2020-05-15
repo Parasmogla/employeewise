@@ -1,11 +1,1 @@
-<h1>Click on load </h1>
-<!-- {{ count$  }} -->
-<div *ngIf="data">
-  <div *ngFor="let c of data | async">
-    {{c.id}}
-  </div>
-</div>
-
-<app-error-handler id="app-component"></app-error-handler>
-
-<button (click)="load()"> Load</button>
+<app-leave-management></app-leave-management>

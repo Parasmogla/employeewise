@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
-import { AppService } from './../../app.service';
-import { load, loaded } from '../actions/app.actions';
+import { RequestTrackerService } from '../../request-tracker.service';
+import { loaded, load } from '../actions/request-tracker.actions';
 
 @Injectable()
-export class AppEffects {
+export class ReqTrackEffects {
   load$ = createEffect(() =>
     this.actions$.pipe(
       ofType(load),
       mergeMap(() =>
-        this.appService.getAll().pipe(
+        this.reqTrackerService.getAll().pipe(
           map((data: any) => loaded({ payload: data.data })),
           catchError(() => of({ type: '[Movies API] Movies Loaded Error' }))
         )
@@ -19,5 +19,8 @@ export class AppEffects {
     )
   );
 
-  constructor(private actions$: Actions, private appService: AppService) {}
+  constructor(
+    private actions$: Actions,
+    private reqTrackerService: RequestTrackerService
+  ) {}
 }
